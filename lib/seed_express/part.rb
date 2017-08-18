@@ -40,11 +40,11 @@ module SeedExpress
       inserting_records, updating_records, digests =
         categorize_each_types_of_data_to_upload
 
-      # 新規登録するレコードを更新
-      insert_results = insert_records(inserting_records)
-
       # 更新するレコードを更新
       update_results = update_records(updating_records)
+
+      # 新規登録するレコードを更新
+      insert_results = insert_records(inserting_records)
 
       # 不要な digest を削除
       delete_waste_seed_records
@@ -64,7 +64,7 @@ module SeedExpress
         :inserted_error     => insert_results[:error],
         :updated_ids        => update_results[:updated_ids],
         :actual_updated_ids => update_results[:actual_updated_ids],
-        :updated_error      => update_results[:updated_error],
+        :updated_error      => update_results[:error],
         :parts_updated      => true,
       }
     end
